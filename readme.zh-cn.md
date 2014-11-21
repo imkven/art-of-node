@@ -6,22 +6,43 @@
 - 懂得至少一种编程语言。例如：JavaScript，Ruby，Python，Perl或其他编程语言。如果你还不是程序员，你不懂编程语言，你可以阅读[JavaScript for Cats](http://jsforcats.com/)。:cat2:
 - git和github。这是一个开源的协作工具，Node社区的用户使用git共享模块。你需要懂得基本操作就能了。这里有三篇很好的入门教程：[1](http://skli.se/2012/09/22/introduction-to-git/), [2](http://zachbruggeman.me/github-for-cats/), [3](http://opensourcerer.diy.org/)
 
-This short book is a work in progress + I don't have a job right now (if I did I wouldn't have the time to write this). If you like it then please consider donating via [gittip](https://www.gittip.com/maxogden/) so that I can write more!
-
-> 译者: 上面这段我没有翻译，因为我希望保持原文。上面作者提到，目前他还没找到工作。如果你喜欢这个文档，希望你可以通过[gittip](https://www.gittip.com/maxogden/)乐捐给作者。这样作者才能够写更多。
+这小本还在编写中。如果你喜欢这小本，你可以通过[gittip](https://www.gittip.com/maxogden/)给作者一点支持。这样我能提出理由抽出时间来写更多！
 
 [![donate](donate.png)](https://www.gittip.com/maxogden/)
 
 ## 目录
 
-- [了解Node](#node-1)
-- [核心模块](#-1)
+- [互动式的学习Node](#learn-node-interactively)
+- [了解Node](#understanding-node)
+- [核心模块](#core-modules)
 - [Callbacks](#callbacks)
 - [Events](#events) (not written yet)
 - [Streams](#streams) (not written yet)
 - [Modules and NPM](#modules) (not written yet)
 - [Going with the grain](#going-with-the-grain)
 - [Real-time apps](#realtime) (not written yet)
+
+## Learn node interactively
+
+你不能只阅读这小本，此外你需要打开你最喜爱的编程器，写一些Node的代码。我总是觉得，编程代码是掌握新编程概念的最佳方法，于其只是阅读。
+
+### NodeSchool.io
+
+[NodeSchool.io](http://nodeschool.io/)是一系列免费和开源的互动式教学课程。你能够在这学习到Node的基本原理和更多。
+
+[Learn You The Node.js](https://github.com/rvagg/learnyounode#learn-you-the-nodejs-for-much-win)是入门级NodeSchool.io的工作坊。它是个命令行程序，你会从中学到使用Node编程时常见的问题。
+
+[![learnyounode](https://github.com/rvagg/learnyounode/raw/master/learnyounode.png)](https://github.com/rvagg/learnyounode#learn-you-the-nodejs-for-much-win)
+
+你可以通过npm安装:
+
+```
+# 安装
+npm install learnyounode -g
+
+# 执行
+learnyounode
+```
 
 ## 了解Node
 
