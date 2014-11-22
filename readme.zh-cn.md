@@ -12,10 +12,10 @@
 
 ## 目录
 
-- [互动式的学习Node](#互动式的学习Node)
-- [了解Node](#understanding-node)
-- [核心模块](#core-modules)
-- [Callbacks](#callbacks)
+- [互动式的学习Node](#互动式的学习node)
+- [了解Node](#了解node)
+- [核心模块](#核心模块)
+- [回调函数](#回调函数)
 - [Events](#events) (not written yet)
 - [Streams](#streams) (not written yet)
 - [Modules and NPM](#modules) (not written yet)
