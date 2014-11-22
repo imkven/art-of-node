@@ -6,7 +6,7 @@
 - 懂得至少一种编程语言。例如：JavaScript，Ruby，Python，Perl或其他编程语言。如果你还不是程序员，你不懂编程语言，你可以阅读[JavaScript for Cats](http://jsforcats.com/)。:cat2:
 - git和github。这是一个开源的协作工具，Node社区的用户使用git共享模块。你需要懂得基本操作就能了。这里有三篇很好的入门教程：[1](http://skli.se/2012/09/22/introduction-to-git/), [2](http://zachbruggeman.me/github-for-cats/), [3](http://opensourcerer.diy.org/)
 
-这小本还在编写中。如果你喜欢这小本，你可以通过[gittip](https://www.gittip.com/maxogden/)给作者一点支持。这样我能提出理由抽出时间来写更多！
+这小本还在编写中。如果你喜欢这小本，你可以通过[gittip](https://www.gittip.com/maxogden/)给我一点支持。这样我能提出理由抽出时间来写更多！
 
 [![donate](donate.png)](https://www.gittip.com/maxogden/)
 
@@ -22,7 +22,7 @@
 - [Going with the grain](#going-with-the-grain)
 - [Real-time apps](#realtime) (not written yet)
 
-## Learn node interactively
+## 互动式的学习Node
 
 你不能只阅读这小本，此外你需要打开你最喜爱的编程器，写一些Node的代码。我总是觉得，编程代码是掌握新编程概念的最佳方法，于其只是阅读。
 
@@ -34,7 +34,7 @@
 
 [![learnyounode](https://github.com/rvagg/learnyounode/raw/master/learnyounode.png)](https://github.com/rvagg/learnyounode#learn-you-the-nodejs-for-much-win)
 
-你可以通过npm安装:
+你可以通过NPM安装:
 
 ```
 # 安装
@@ -46,46 +46,46 @@ learnyounode
 
 ## 了解Node
 
-Node.js是一个开源项目，目的是让你通过编写JavaScript的程序进行网络、文件系统或其他I/O源的沟通。就这些！它只是一个简单而稳定的I/O平台，你可以在这个平台上架构模块。
+Node.js是一个开源项目，目的是让你使用JavaScript编写的程序来进行网络、文件系统或其他I/O源的沟通。不复杂！它只提供一个简单而稳定的I/O平台，你可以在这个平台上架构任何模块。
 
-有没有I/O出的例子？ 我这里有一张图，上面是我用Node.js制作的程序，你可以看到上面有很多I/O源：
+有没有些I/O的例子？有，我这里有一张图，上面是我用Node.js制作的程序，你可以在上面看到Node.js能够与各种I/O源沟通：
 
 ![server diagram](server-diagram.png)
 
-如果你无法明白上图显示的所有东西，这是没问题的。重点是你看到一个Node的运作（在中间六边形那个），它就像经纪人，管理全部I/O的端口（橙色和紫色的线条代表I/O）。
+如果你无法明白上图显示的所有东西，没关系，重点是你看到一个Node的运作（在中间六边形那个），它就像经纪人，管理全部I/O的端口（橙色和紫色的线条代表I/O流）。
 
-一般上我们编写的程序可以分为以下两类：
+一般上我们编写的程序可以分为以下两种：
 
-- 很难编写，但是效率超高（就像用C从零开始编写一个Web服务器）
-- 很简单编写，但是不够效率/强大（就像有人上传5GB的文件去你服务器，但是服务器当机了）
+- 很难编写，但是效率超级好（就像使用C从零开始编写一个Web服务器软件）
+- 很简单编写，但是不够效率或强大（就像有人上传5GB的文件去你服务器，但是你的服务器死机了）
 
 Node试图做到平衡在这两者之间：在大多数用列做到高效运行，而且容易明白和开发。
 
 Node不是以下两样东西：
 
-  - 不是Web框架 （不像Rails或Django，尽管它可以被用来做这样的事情）
+  - 不是Web框架（不像Rails或Django，尽管它可以被用来做这样的事情）
   - 不是编程语言（Node是使用JavaScript编程，它没有自己的编程语言）
 
 相反，Node是：
 
   - 设计上简单，而且容易明白和使用的平台
-  - 适合那些需要快速和处理很多I/O链接的程序
+  - 适合开发基于I/O的程序，就是那些需要快速处理大量I/O流的程序。
 
 在基层，Node可以作为一种工具，并编写出以下两类程序：
 
   - 需要使用到Web协议（如：HTTP、TCP、UDP、DNS和SSL）的网络程序
   - 需要对文件系统或者本地进程/内存进行读入和读出操作的程序
 
-什么是“I/O程序”？ 这里有一些常见的I/O源：
+这里有一些常见的I/O源：
 
   - 资料库 （如：MySQL、PostgreSQL、MongoDB、Redis、CouchDB）
   - APIs（如：Twitter、Facebook、Apple Push Notifications）
   - HTTP/WebSocket的链接（从用户的Web应用程序）
   - 文件档（图像尺寸伸缩软件、视频编辑软件、网络收音机）
 
-Node能够[异步处理](http://en.wikipedia.org/wiki/Asynchronous_I/O)多个不同种类的I/O源。比如说，假设你来到快餐店，你向店员要了一个芝士汉堡，他们会马上为你下单和准备汉堡。然后，他们会要求你在旁边等汉堡完成。在你等待这段时间，他们可以接受其他订单和帮其他人准备汉堡。试想下，如果你站在柜台前面，一直等到你的芝士汉堡完成，那么你就阻碍了后面的人下订单，厨师也不能帮其他人准备汉堡！我们称这个为**阻塞I/O**，因为一次只能处理一个I/O操作（厨师一次只能准备一个汉堡）。Node，不是这样的，它是**非阻塞**性质，就是说它能一次准备很多汉堡。
+Node能够[异步处理](http://en.wikipedia.org/wiki/Asynchronous_I/O)多个不同种类的I/O源。比如说，假设你来到快餐店，你向店员要了一个芝士汉堡，他们会马上为你下单和准备汉堡。然后，他们会要求你在旁边等汉堡完成。在你等待这段时间，店员可以继续接其他订单和帮其他人准备汉堡。试想下，如果你站在柜台前面，一直等到你的芝士汉堡完成，那么你就阻碍后面的人下订单，厨师也不能帮其他人准备汉堡！我们称这个为**阻塞I/O**，因为一次只能处理一个I/O操作（厨师一次只能准备一个汉堡）。Node不会这样做，它是**非阻塞**性，就是说它能一次准备很多汉堡。
 
-多谢Node非阻塞的性质，让我们可以实现以下这么有趣事情：
+多谢Node非阻塞性，让我们可以实现以下这么有趣事情：
 
   - 控制[Quadcopters飞行](http://nodecopter.com)
   - 编写IRC谈天机器人
