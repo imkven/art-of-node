@@ -1,14 +1,10 @@
-# The Art of Node
+﻿# The Art of Node
 ## An introduction to Node.js
 
 This document is intended for readers who know at least a little bit of a couple of things:
 
 - a scripting language like JavaScript, Ruby, Python, Perl, etc. If you aren't a programmer yet then it is probably easier to start by reading [JavaScript for Cats](http://jsforcats.com/). :cat2:
-- git and github. These are the open source collaboration tools that people in the node community use to share modules. You just need to know the basics. Here are three great intro tutorials: [1](http://skli.se/2012/09/22/introduction-to-git/), [2](http://zachbruggeman.me/github-for-cats/), [3](http://opensourcerer.diy.org/)
-
-This short book is a work in progress. If you like it then please **give me a dollar** via [gittip](https://www.gittip.com/maxogden/) so that I can justify taking the time to write more!
-
-[![donate](donate.png)](https://www.gittip.com/maxogden/)
+- git and github. These are the open source collaboration tools that people in the node community use to share modules. You just need to know the basics. Here are three great intro tutorials: [1](https://github.com/jlord/git-it-electron#readme), [2](http://ericsteinborn.com/github-for-cats/#/), [3](http://opensourcerer.diy.org/)
 
 ## Table of contents
 
@@ -83,13 +79,13 @@ What is an "I/O based program"? Here are some common I/O sources:
   - HTTP/WebSocket connections (from users of a web app)
   - Files (image resizer, video editor, internet radio)
 
-Node does I/O in a way that is [asynchronous](http://en.wikipedia.org/wiki/Asynchronous_I/O) which lets it handle lots of different things simultaneously. For example, if you go down to a fast food joint and order a cheeseburger they will immediately take your order and then make you wait around until the cheeseburger is ready. In the meantime they can take other orders and start cooking cheeseburgers for other people. Imagine if you had to wait at the register for your cheeseburger, blocking all other people in line from ordering while they cooked your burger! This is called **blocking I/O** because all I/O (cooking cheeseburgers) happens one at a time. Node, on the other hand, is **non-blocking**, which means it can cook many cheeseburgers at once.
+Node does I/O in a way that is [asynchronous](https://en.wikipedia.org/wiki/Asynchronous_I/O) which lets it handle lots of different things simultaneously. For example, if you go down to a fast food joint and order a cheeseburger they will immediately take your order and then make you wait around until the cheeseburger is ready. In the meantime they can take other orders and start cooking cheeseburgers for other people. Imagine if you had to wait at the register for your cheeseburger, blocking all other people in line from ordering while they cooked your burger! This is called **blocking I/O** because all I/O (cooking cheeseburgers) happens one at a time. Node, on the other hand, is **non-blocking**, which means it can cook many cheeseburgers at once.
 
 Here are some fun things made easy with node thanks to its non-blocking nature:
   
-  - Control [flying quadcopters](http://nodecopter.com)
+  - Control [flying quadcopters](http://www.nodecopter.com/)
   - Write IRC chat bots
-  - Create [walking biped robots](http://www.youtube.com/watch?v=jf-cEB3U2UQ)
+  - Create [walking biped robots](https://www.youtube.com/watch?v=jf-cEB3U2UQ)
 
 ## Core modules
 
@@ -144,15 +140,15 @@ When `readFile` is done reading the file (this may take anywhere from millisecon
 
 The reason we got `undefined` above is that nowhere in our code exists logic that tells the `console.log` statement to wait until the `readFile` statement finishes before it prints out the number.
 
-If you have some code that you want to be able to execute over and over again or at a later time the first step is to put that code inside a function. Then you can call the function whenever you want to run your code. It helps to give your functions descriptive names.
+If you have some code that you want to be able to execute over and over again, or at a later time, the first step is to put that code inside a function. Then you can call the function whenever you want to run your code. It helps to give your functions descriptive names.
 
 Callbacks are just functions that get executed at some later time. The key to understanding callbacks is to realize that they are used when you don't know **when** some async operation will complete, but you do know **where** the operation will complete — the last line of the async function! The top-to-bottom order that you declare callbacks does not necessarily matter, only the logical/hierarchical nesting of them. First you split your code up into functions, and then use callbacks to declare if one function depends on another function finishing.
 
-The `fs.readFile` method is provided by node, is asynchronous and happens to take a long time to finish. Consider what it does: it has to go to the operating system, which in turn has to go to the file system, which lives on a hard drive that may or may not be spinning at thousands of revolutions per minute. Then it has to use a laser to read data and send it back up through the layers back into your javascript program. You give `readFile` a function (known as a callback) that it will call after it has retrieved the data from the file system. It puts the data it retrieved into a javascript variable and calls your function (callback) with that variable, in this case the variable is called `fileContents` because it contains the contents of the file that was read.
+The `fs.readFile` method is provided by node, is asynchronous, and happens to take a long time to finish. Consider what it does: it has to go to the operating system, which in turn has to go to the file system, which lives on a hard drive that may or may not be spinning at thousands of revolutions per minute. Then it has to use a magnetic head to read data and send it back up through the layers back into your javascript program. You give `readFile` a function (known as a callback) that it will call after it has retrieved the data from the file system. It puts the data it retrieved into a javascript variable and calls your function (callback) with that variable. In this case the variable is called `fileContents` because it contains the contents of the file that was read.
 
 Think of the restaurant example at the beginning of this tutorial. At many restaurants you get a number to put on your table while you wait for your food. These are a lot like callbacks. They tell the server what to do after your cheeseburger is done.
 
-Let's put our `console.log` statement into a function and pass it in as a callback.
+Let's put our `console.log` statement into a function and pass it in as a callback:
 
 ```js
 var fs = require('fs')
@@ -173,16 +169,16 @@ function logMyNumber() {
 addOne(logMyNumber)
 ```
 
-Now the `logMyNumber` function can get passed in an argument that will become the `callback` variable inside the `addOne` function. After `readFile` is done the `callback` variable will be invoked (`callback()`). Only functions can be invoked, so if you pass in anything other than a function it will cause an error.
+Now the `logMyNumber` function can get passed in as an argument that will become the `callback` variable inside the `addOne` function. After `readFile` is done the `callback` variable will be invoked (`callback()`). Only functions can be invoked, so if you pass in anything other than a function it will cause an error.
 
 When a function gets invoked in javascript the code inside that function will immediately get executed. In this case our log statement will execute since `callback` is actually `logMyNumber`. Remember, just because you *define* a function it doesn't mean it will execute. You have to *invoke* a function for that to happen.
 
 To break down this example even more, here is a timeline of events that happen when we run this program:
 
-- 1: the code is parsed, which means if there are any syntax errors they would make the program break. During this initial phase there are 4 things that get defined: `fs`, `myNumber`, `addOne`, and `logMyNumber`. Note that these are just being defined, no functions have been called/invoked yet.
-- 2: When the last line of our program gets executed `addOne` gets invoked, getting passed in the `logMyNumber` function as `callback`, which is what we want to be called when `addOne` is complete. This immediately causes the asynchronous `fs.readFile` function to kick off. This part of the program takes a while to finish.
-- 3: with nothing to do, node idles for a bit as it waits for `readFile` to finish. If there was anything else to do during this time, node would be available for work.
-- 4: `readFile` finishes and calls its callback, `doneReading`, which then in turn increments the number and then immediately invokes the function that `addOne` passed in (its callback), `logMyNumber`.
+- 1: The code is parsed, which means if there are any syntax errors they would make the program break. During this initial phase, `fs` and `myNumber` are declared as variables while `addOne` and `logMyNumber` are declared as functions. Note that these are just declarations. Neither function has been called nor invoked yet.
+- 2: When the last line of our program gets executed `addOne` is invoked with the `logMyNumber` function passed as its `callback` argument. Invoking `addOne` will first run the asynchronous `fs.readFile` function. This part of the program takes a while to finish.
+- 3: With nothing to do, node idles for a bit as it waits for `readFile` to finish. If there was anything else to do during this time, node would be available for work.
+- 4: As soon as `readFile` finishes it executes its callback, `doneReading`, which parses `fileContents` for an integer called `myNumber`, increments `myNumber` and then immediately invokes the function that `addOne` passed in (its callback), `logMyNumber`.
 
 Perhaps the most confusing part of programming with callbacks is how functions are just objects that can be stored in variables and passed around with different names. Giving simple and descriptive names to your variables is important in making your code readable by others. Generally speaking in node programs when you see a variable like `callback` or `cb` you can assume it is a function.
 
@@ -192,7 +188,7 @@ Here is a pseudocode version of the above example:
 
 ```js
 function addOne(thenRunThisFunction) {
-  waitAMinute(function waitedAMinute() {
+  waitAMinuteAsync(function waitedAMinute() {
     thenRunThisFunction()
   })
 }
@@ -266,7 +262,7 @@ fs.readFile('movie.mp4', function finishedReading(error, movieData) {
 
 In node if you require the [events](http://nodejs.org/api/events.html) module you can use the so-called 'event emitter' that node itself uses for all of its APIs that emit things.
 
-Events are a common pattern in programming, known more widely as the ['observer pattern'](http://en.wikipedia.org/wiki/Observer_pattern) or 'pub/sub' (publish/subscribe). Whereas callbacks are a one-to-one relationship between the thing waiting for the callback and the thing calling the callback, events are the same exact pattern except with a many-to-many API.
+Events are a common pattern in programming, known more widely as the ['observer pattern'](https://en.wikipedia.org/wiki/Observer_pattern) or 'pub/sub' (publish/subscribe). Whereas callbacks are a one-to-one relationship between the thing waiting for the callback and the thing calling the callback, events are the same exact pattern except with a many-to-many API.
 
 The easiest way to think about events is that they let you subscribe to things. You can say 'when X do Y', whereas with plain callbacks it is 'do X then Y'.
 
@@ -365,7 +361,7 @@ Node core is made up of about two dozen modules, some lower level ones like `eve
 
 This design is intentional. Node core is supposed to be small, and the modules in core should be focused on providing tools for working with common I/O protocols and formats in a way that is cross-platform.
 
-For everything else there is [npm](https://npmjs.org/). Anyone can create a new node module that adds some functionality and publish it to npm. As of the time of this writing there are 34,000 modules on npm.
+For everything else there is [npm](https://www.npmjs.com/). Anyone can create a new node module that adds some functionality and publish it to npm. As of the time of this writing there are 34,000 modules on npm.
 
 ### How to find a module
 
@@ -377,12 +373,12 @@ There are a ton of results! npm is quite popular and you will usually be able to
 
 - [hummus](https://github.com/galkahana/HummusJS/wiki/Features) - c++ pdf manipulator
 - [mimeograph](https://github.com/steelThread/mimeograph) - api on a conglomeration of tools (poppler, tesseract, imagemagick etc)
-- [pdftotextjs](https://npmjs.org/package/pdftotextjs) - wrapper around [pdftotext](https://en.wikipedia.org/wiki/Pdftotext)
-- [pdf-text-extract](https://npmjs.org/package/pdf-text-extract) - another wrapper around pdftotext
-- [pdf-extract](https://npmjs.org/package/pdf-extract) - wrapper around pdftotext, pdftk, tesseract, ghostscript
-- [pdfutils](https://npmjs.org/package/pdfutils) - poppler wrapper
-- [scissors](https://npmjs.org/package/scissors) - pdftk, ghostscript wrapper w/ high level api
-- [textract](https://npmjs.org/package/textract) - pdftotext wrapper
+- [pdftotextjs](https://www.npmjs.com/package/pdftotextjs) - wrapper around [pdftotext](https://en.wikipedia.org/wiki/Pdftotext)
+- [pdf-text-extract](https://www.npmjs.com/package/pdf-text-extract) - another wrapper around pdftotext
+- [pdf-extract](https://www.npmjs.com/package/pdf-extract) - wrapper around pdftotext, pdftk, tesseract, ghostscript
+- [pdfutils](https://www.npmjs.com/package/pdfutils) - poppler wrapper
+- [scissors](https://www.npmjs.com/package/scissors) - pdftk, ghostscript wrapper w/ high level api
+- [textract](https://www.npmjs.com/package/textract) - pdftotext wrapper
 - [pdfiijs](https://github.com/fagbokforlaget/pdfiijs) - pdf to inverted index using textiijs and poppler
 - [pdf2json](https://github.com/modesty/pdf2json/blob/master/readme.md) - pure js pdf to json
 
@@ -428,7 +424,7 @@ npm is different from most package managers in that it installs modules into a f
 
 Many package managers install things globally. For instance, if you `apt-get install couchdb` on Debian Linux it will try to install the latest stable version of CouchDB. If you are trying to install CouchDB as a dependency of some other piece of software and that software needs an older version of CouchDB, you have to uninstall the newer version of CouchDB and then install the older version. You can't have two versions of CouchDB installed because Debian only knows how to install things into one place.
 
-It's not just Debian that does this. Most programming language package managers work this way too. To address the global dependencies problem described above there have been virtual environment developed like [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs.html) for Python or [bundler](http://bundler.io/) for Ruby. These just split your environment up in to many virtual environments, one for each project, but inside each environment dependencies are still globally installed. Virtual environments don't always solve the problem, sometimes they just multiply it by adding additional layers of complexity.
+It's not just Debian that does this. Most programming language package managers work this way too. To address the global dependencies problem described above there have been virtual environment developed like [virtualenv](http://python-guide.readthedocs.org/en/latest/dev/virtualenvs/) for Python or [bundler](http://bundler.io/) for Ruby. These just split your environment up in to many virtual environments, one for each project, but inside each environment dependencies are still globally installed. Virtual environments don't always solve the problem, sometimes they just multiply it by adding additional layers of complexity.
 
 With npm installing global modules is an anti-pattern. Just like how you shouldn't use global variables in your JavaScript programs you also shouldn't install global modules (unless you need a module with an executable binary to show up in your global `PATH`, but you don't always need to do this -- more on this later).
 
@@ -446,7 +442,7 @@ Here's a visual example:
 
 ![mod-diagram-01](mod-diagram-01.png)
 
-When the current working directory is `subsubfolder` and `require('foo')` is called, node will look for the folder called `subsubsubfolder/node_modules`. In this case it won't find it -- the folder there is mistakenly called `my_modules`. Then node will go up one folder and try again, meaning it then looks for `subfolder_B/node_modules`, which also doesn't exist. Third try is a charm, though, as `folder/node_modules` does exist *and* has a folder called `foo` inside of it. If `foo` wasn't in there node would continue its search up the directory tree.
+When the current working directory is `subsubfolder` and `require('foo')` is called, node will look for the folder called `subsubfolder/node_modules`. In this case it won't find it -- the folder there is mistakenly called `my_modules`. Then node will go up one folder and try again, meaning it then looks for `subfolder_B/node_modules`, which also doesn't exist. Third try is a charm, though, as `folder/node_modules` does exist *and* has a folder called `foo` inside of it. If `foo` wasn't in there node would continue its search up the directory tree.
 
 Note that if called from `subfolder_B` node will never find `subfolder_A/node_modules`, it can only see `folder/node_modules` on its way up the tree.
 
@@ -481,7 +477,7 @@ module.exports = 1
 
 By default node tries to load `module/index.js` when you `require('module')`, any other file name won't work unless you set the `main` field of `package.json` to point to it.
 
-Put both of those files in a folder called `number-one` (the `id` in `package.json` must match the folder name) and you'll have a working node module.
+Put both of those files in a folder called `number-one` (the `name` in `package.json` must match the folder name) and you'll have a working node module.
 
 Calling the function `require('number-one')` returns the value of whatever `module.exports` is set to inside the module:
 
@@ -527,7 +523,7 @@ A common misconception about npm is that since it has 'Node' in the name that it
 
 [browserify](http://browserify.org/) is a utility written in Node that tries to convert any node module into code that can be run in browsers. Not all modules work (browsers can't do things like host an HTTP server), but a lot of modules on NPM *will* work.
 
-To try out npm in the browser you can use [RequireBin](http://requirebin.com/), an app I made that takes advantage of [Browserify-CDN](https://github.com/jesusabdullah/browserify-cdn), which internally uses browserify but returns the output through HTTP (instead of the command line -- which is how browserify is usually used).
+To try out npm in the browser you can use [RequireBin](http://requirebin.com/), an app I made that takes advantage of [Browserify-CDN](https://github.com/jfhbrook/wzrd.in), which internally uses browserify but returns the output through HTTP (instead of the command line -- which is how browserify is usually used).
 
 Try putting this code into RequireBin and then hit the preview button:
 
@@ -554,13 +550,13 @@ setTimeout(function() {
 }, 500)
 ```
 
-Or check out a [more complicated example](http://requirebin.com/?gist=6031068) (feel free to change the code and see what happens):
+Or check out a [more complicated example](http://requirebin.com/?gist=679b58d4237eaca37173) (feel free to change the code and see what happens):
 
-[![requirebin](requirebin.png)](http://requirebin.com/embed?gist=6031068)
+[![requirebin](requirebin.png)](http://requirebin.com/embed?gist=679b58d4237eaca37173)
 
 ## Going with the grain
 
-Like any good tool, node is best suited for a certain set of use cases. For example: Rails, the popular web framework, is great for modeling complex [business logic](http://en.wikipedia.org/wiki/Business_logic), e.g. using code to represent real life business objects like accounts, loan, itineraries, and inventories. While it is technically possible to do the same type of thing using node, there would be definite drawbacks since node is designed for solving I/O problems and it doesn't know much about 'business logic'. Each tool focuses on different problems. Hopefully this guide will help you gain an intuitive understanding of the strengths of node so that you know when it can be useful to you.
+Like any good tool, node is best suited for a certain set of use cases. For example: Rails, the popular web framework, is great for modeling complex [business logic](https://en.wikipedia.org/wiki/Business_logic), e.g. using code to represent real life business objects like accounts, loan, itineraries, and inventories. While it is technically possible to do the same type of thing using node, there would be definite drawbacks since node is designed for solving I/O problems and it doesn't know much about 'business logic'. Each tool focuses on different problems. Hopefully this guide will help you gain an intuitive understanding of the strengths of node so that you know when it can be useful to you.
 
 ### What is outside of node's scope?
 
@@ -613,7 +609,7 @@ fs.readFile('movie.mp4', function(err, data) {
 
 Note: If you don't know what these things mean then you will likely have an easier time learning node, since unlearning things is just as much work as learning things.
 
-Node uses threads internally to make things fast but doesn't expose them to the user. If you are a technical user wondering why node is designed this way then you should 100% read about [the design of libuv](http://nikhilm.github.com/uvbook/), the C++ I/O layer that node is built on top of.
+Node uses threads internally to make things fast but doesn't expose them to the user. If you are a technical user wondering why node is designed this way then you should 100% read about [the design of libuv](http://nikhilm.github.io/uvbook/), the C++ I/O layer that node is built on top of.
 
 ## License
 
@@ -622,4 +618,4 @@ Node uses threads internally to make things fast but doesn't expose them to the 
 Creative Commons Attribution License (do whatever, just attribute me)
 http://creativecommons.org/licenses/by/2.0/
 
-Donate icon is from the [http://thenounproject.com/noun/donate/#icon-No285](Noun Project)
+Donate icon is from the [Noun Project](https://thenounproject.com/term/donate/285/)
