@@ -12,27 +12,15 @@
 
 ## 目录
 
-<<<<<<< HEAD
 - [互动式的学习Node](#互动式的学习node)
-- [了解Node](#了解node)
-- [核心模块](#核心模块)
-- [回调函数](#回调函数)
-- [Events](#events) (not written yet)
-- [Streams](#streams) (not written yet)
-- [Modules and NPM](#modules) (not written yet)
-- [Going with the grain](#going-with-the-grain)
-- [Real-time apps](#realtime) (not written yet)
-=======
 - [了解Node](#了解Node)
 - [核心模块](#核心模块)
 - [回调函数](#回调函数)
 - [事件](#事件)
 - [流](#流)
-- [模块](#模块) 
+- [模块](#模块)
 - [用npm在客户端开发](#用npm在客户端开发)
 - [析薪杝矣](#析薪杝矣)
-
->>>>>>> maxogden/master
 
 ## 互动式的学习Node
 
@@ -327,7 +315,7 @@ var chatClient = require('my-chat-client').connect()
 
 chatClient.on('connect', function() {
   // have the UI show we are connected
-}) 
+})
 
 chatClient.on('connectionError', function() {
   // show error to the user
