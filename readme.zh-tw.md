@@ -21,7 +21,25 @@
 
 ## 互動式的學習Node
 
-TODO
+除了閱讀本指南，更重要的是拿出你喜歡的代碼編輯器，寫些node代碼。每次當我在書上讀了一點代碼，而沒用動手寫代碼，那是不可能學會一種新語言。
+
+### NodeSchool.io
+
+[NodeSchool.io](http://nodeschool.io/) is a series of free + open source interactive workshops that teach you the principles of Node.js and beyond.
+
+[Learn You The Node.js](https://github.com/workshopper/learnyounode#learn-you-the-nodejs-for-much-win) is the introductory NodeSchool.io workshop. It's a set of programming problems that introduce you to common node patterns. It comes packaged as a command line program.
+
+[![learnyounode](https://github.com/rvagg/learnyounode/raw/master/learnyounode.png)](https://github.com/rvagg/learnyounode#learn-you-the-nodejs-for-much-win)
+
+You can install it with npm:
+
+```
+# install
+npm install learnyounode -g
+
+# start the menu
+learnyounode
+```
 
 ## 瞭解Node
 
