@@ -6,12 +6,6 @@
 - 至少懂得一種程式語言。例如：JavaScript，Ruby，Python，Perl 或其他程式語言。如果你還不是程式設計師，你也不懂程式語言，你可以閱讀 [JavaScript for Cats](http://jsforcats.com/)。:cat2:
 - git 和 github。這是一個開源的協作工具，Node 社群的參與者使用 git 共享模組。你只需要懂得基本操作就夠了。這裏有三篇很好的入門教學：[1](https://github.com/jlord/git-it-electron#readme), [2](http://zachbruggeman.me/github-for-cats/), [3](http://opensourcerer.diy.org/)
 
-This short book is a work in progress + I don't have a job right now (if I did I wouldn't have the time to write this). If you like it then please consider donating via [gittip](https://www.gittip.com/maxogden/) so that I can write more!
-
-> 譯者: 上面這段我沒有翻譯，因爲我希望保持原文。上面作者提到，目前他還沒找到工作。如果你喜歡這份文件，希望你可以通過 [gittip](https://www.gittip.com/maxogden/) 樂捐給作者。這樣作者才能夠寫更多內容。
-
-[![donate](donate.png)](https://www.gittip.com/maxogden/)
-
 ## 目錄
 
 - [瞭解Node](#node-1)
