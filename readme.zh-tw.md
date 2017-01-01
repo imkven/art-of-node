@@ -1,4 +1,5 @@
 # Node 的藝術
+
 ## Node.js 入門
 
 本文件假設讀者已經懂了以下的兩樣東西：
@@ -8,14 +9,19 @@
 
 ## 目錄
 
-- [瞭解Node](#node-1)
-- [核心模組](#-1)
-- [回呼機制](#callbacks)
-- [Events](#events) (not written yet)
-- [Streams](#streams) (not written yet)
-- [Modules and NPM](#modules) (not written yet)
+- [互動式的學習Node](#互動式的學習Node)
+- [瞭解Node](#瞭解Node)
+- [核心模組](#核心模組)
+- [回呼機制](#回呼機制)
+- [事件](#事件)
+- [串流](#串流)
+- [模組與npm](#模組)
+- [客戶端開發使用npm](#客戶端開發使用npm)
 - [Going with the grain](#going-with-the-grain)
-- [Real-time apps](#realtime) (not written yet)
+
+## 互動式的學習Node
+
+TODO
 
 ## 瞭解Node
 
@@ -232,7 +238,7 @@ fs.readFile('movie.mp4', function finishedReading(error, movieData) {
 })
 ```
 
-## Events
+## 事件
 
 In node if you require the [events](http://nodejs.org/api/events.html) module you can use the so-called 'event emitter' that node itself uses for all of its APIs that emit things.
 
@@ -314,7 +320,7 @@ function storeMessage(message) {
 
 MORE EVENTS CONTENT TODO
 
-## Streams
+## 串流
 
 Early on in the project the file system and network APIs had their own separate patterns for dealing with streaming I/O. For example, files in a file system have things called 'file descriptors' so the `fs` module had to have extra logic to keep track of these things whereas the network modules didn't have such a concept. Despite minor differences in semantics like these, at a fundamental level both groups of code were duplicating a lot of functionality when it came to reading data in and out. The team working on node realized that it would be confusing to have to learn two sets of semantics to essentially do the same thing so they made a new API called the `Stream` and made all the network and file system code use it.
 
@@ -322,7 +328,11 @@ The whole point of node is to make it easy to deal with file systems and network
 
 THE REST IS TODO, in the meantime read the [streams handbook](https://github.com/substack/stream-handbook#introduction)
 
-## Modules
+## 模組
+
+TODO
+
+## 客戶端開發使用npm
 
 TODO
 
@@ -383,10 +393,6 @@ Note: If you don't know what these things mean then you will likely have an easi
 
 Node uses threads internally to make things fast but doesn't expose them to the user. If you are a technical user wondering why node is designed this way then you should 100% read about [the design of libuv](http://nikhilm.github.com/uvbook/), the C++ I/O layer that node is built on top of.
 
-## Real-time apps
-
-TODO - this section will have a non-contrived, functioning application with a web UI whose architecture will be dissected and discussed.
-
 ## License
 
 ![CCBY](CCBY.png)
@@ -394,4 +400,4 @@ TODO - this section will have a non-contrived, functioning application with a we
 Creative Commons Attribution License (do whatever, just attribute me)
 http://creativecommons.org/licenses/by/2.0/
 
-Donate icon is from the [http://thenounproject.com/noun/donate/#icon-No285](Noun Project)
+Donate icon is from the [Noun Project](https://thenounproject.com/term/donate/285/)
